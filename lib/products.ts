@@ -27,6 +27,19 @@ export interface ProductCTA {
   href: string;
 }
 
+export interface ProductImage {
+  src: string;
+  alt: string;
+}
+
+export interface WorkflowVisual {
+  /** Section label, e.g. "HOW PROFITPILOT WORKS" or "PRODUCT VISION" */
+  label: string;
+  /** Optional status note chip, e.g. "On the roadmap" */
+  note?: string;
+  steps: string[];
+}
+
 export interface Product {
   name: string;
   slug: string;
@@ -52,7 +65,9 @@ export interface Product {
   /** Roadmap items shown separately so unfinished scope isn't claimed as working. */
   plannedFeatures?: string[];
   logo?: string; // plain-text or monogram
-  screenshots?: string[];
+  screenshots?: ProductImage[];
+  /** Explanatory flow diagram for products without a safe public demo — rendered as a diagram, never as fake UI. */
+  workflowVisual?: WorkflowVisual;
   demoVideo?: string;
   origin?: string;
   problem?: string;
@@ -100,6 +115,17 @@ export const products: Product[] = [
       "Operational dashboards",
     ],
     logo: "ProfitPilot",
+    workflowVisual: {
+      label: "How ProfitPilot works",
+      steps: [
+        "Clients",
+        "Schedule",
+        "Cleaners",
+        "Job Completion",
+        "Invoicing",
+        "Profit Visibility",
+      ],
+    },
     origin:
       "ProfitPilot started inside a real service business — built while trying to understand scheduling, payroll, profitability, and day-to-day operations.",
     problem:
@@ -178,6 +204,17 @@ export const products: Product[] = [
       "Built for crews working the same job at the same time",
     ],
     logo: "CrewCheck",
+    workflowVisual: {
+      label: "How CrewCheck works",
+      steps: [
+        "Create Job",
+        "Share Code",
+        "Crew Joins",
+        "Claim Tasks",
+        "Complete Work",
+        "Live Progress",
+      ],
+    },
     origin:
       "CrewCheck came from a real post-construction cleaning job where multiple people needed to work from the same checklist without constantly asking each other what had already been completed.",
     problem:
@@ -266,6 +303,24 @@ export const products: Product[] = [
       "Operational visibility for management",
     ],
     logo: "StockFlow Pro",
+    screenshots: [
+      {
+        src: "/products/stockflow/dashboard.webp",
+        alt: "StockFlow Pro dashboard — jobs, discrepancies, and demo workflow",
+      },
+      {
+        src: "/products/stockflow/jobs.webp",
+        alt: "StockFlow Pro jobs management with progress and assignments",
+      },
+      {
+        src: "/products/stockflow/review.webp",
+        alt: "StockFlow Pro review queue flagging count discrepancies",
+      },
+      {
+        src: "/products/stockflow/map.webp",
+        alt: "StockFlow Pro job locations map with status markers",
+      },
+    ],
     origin:
       "StockFlow Pro is an independent MTHD prototype inspired by real inventory and field workflow problems.",
     problem:
@@ -365,6 +420,16 @@ export const products: Product[] = [
     hasInteractiveDemo: true,
     liveUrl: "https://neon-bricks-self.vercel.app",
     logo: "Neon Bricks",
+    screenshots: [
+      {
+        src: "/products/neon-bricks/title.webp",
+        alt: "Neon Bricks title screen with play, settings, and high scores",
+      },
+      {
+        src: "/products/neon-bricks/gameplay.webp",
+        alt: "Neon Bricks stacking gameplay with score and falling blocks",
+      },
+    ],
     accent: "teal-400",
   },
   {
@@ -384,6 +449,24 @@ export const products: Product[] = [
     hasInteractiveDemo: true,
     liveUrl: "https://brain-quest-ruddy.vercel.app",
     logo: "Brain Quest",
+    screenshots: [
+      {
+        src: "/products/brain-quest/home.webp",
+        alt: "Brain Quest title screen with Start Adventure button",
+      },
+      {
+        src: "/products/brain-quest/worlds.webp",
+        alt: "Brain Quest world selection — Jungle, Space, and Castle worlds",
+      },
+      {
+        src: "/products/brain-quest/question.webp",
+        alt: "Brain Quest learning question gameplay in Jungle World",
+      },
+      {
+        src: "/products/brain-quest/progress.webp",
+        alt: "Brain Quest progress screen with stars, levels, and world unlocks",
+      },
+    ],
     accent: "teal-400",
   },
   {
@@ -403,6 +486,24 @@ export const products: Product[] = [
     hasInteractiveDemo: true,
     liveUrl: "https://gymflow-lac-six.vercel.app",
     logo: "GymFlow",
+    screenshots: [
+      {
+        src: "/products/gymflow/dashboard.webp",
+        alt: "GymFlow dashboard with today's workout and progress rings",
+      },
+      {
+        src: "/products/gymflow/generator.webp",
+        alt: "GymFlow workout generator — goal, equipment, and time selection",
+      },
+      {
+        src: "/products/gymflow/workout.webp",
+        alt: "GymFlow generated workout with exercises, sets, and calories",
+      },
+      {
+        src: "/products/gymflow/meals.webp",
+        alt: "GymFlow generated meal plan with macros and daily meals",
+      },
+    ],
     accent: "teal-400",
   },
 
@@ -438,6 +539,18 @@ export const products: Product[] = [
       "Workflow automation",
     ],
     logo: "FluxOne",
+    workflowVisual: {
+      label: "Product vision",
+      note: "On the roadmap",
+      steps: [
+        "Lead",
+        "Pipeline",
+        "Quote",
+        "Schedule",
+        "Invoice",
+        "Follow-Up",
+      ],
+    },
     CTA: {
       label: "Join the Waitlist",
       href: "/access?product=fluxone&intent=waitlist",
@@ -512,6 +625,17 @@ export const products: Product[] = [
       "Mobile-friendly views",
     ],
     logo: "Schedule",
+    workflowVisual: {
+      label: "How MTHD Schedule works",
+      steps: [
+        "Employee Availability",
+        "Available Jobs",
+        "Automated Matching",
+        "Owner Review",
+        "Schedule Sent",
+        "Employee Confirmation",
+      ],
+    },
     CTA: { label: "Book a Demo", href: "/book" },
     secondaryCTA: { label: "Learn More", href: "/products/schedule" },
     accent: "teal-400",

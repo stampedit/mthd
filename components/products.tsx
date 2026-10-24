@@ -1,4 +1,5 @@
-import { ArrowRight, Check, ExternalLink } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, Check, ChevronDown, ExternalLink } from "lucide-react";
 import { Button, Container } from "./ui";
 import {
   type Product,
@@ -112,7 +113,7 @@ export function BusinessProductCard({
   }
 
   return (
-    <div className="group relative flex flex-col rounded-3xl border border-mthd-border bg-mthd-surface/30 p-8 transition-all duration-300 hover:border-mthd-accent/40">
+    <div className="group relative flex flex-col overflow-hidden rounded-3xl border border-mthd-border bg-mthd-surface/30 p-8 transition-all duration-300 hover:border-mthd-accent/40">
       <div className="mb-4 flex items-center justify-between gap-3">
         <StatusPill status={product.status} />
         {product.kind && (
@@ -121,6 +122,22 @@ export function BusinessProductCard({
           </span>
         )}
       </div>
+
+      {product.screenshots?.[0] && (
+        <a
+          href={`/products/${product.slug}`}
+          className="relative -mx-8 mb-6 block h-44 overflow-hidden border-y border-mthd-border"
+          tabIndex={-1}
+        >
+          <Image
+            src={product.screenshots[0].src}
+            alt={product.screenshots[0].alt}
+            fill
+            sizes="(min-width: 1024px) 400px, 100vw"
+            className="object-cover object-top"
+          />
+        </a>
+      )}
 
       <h3 className="text-2xl font-semibold tracking-tight text-white">
         {product.name}
@@ -147,7 +164,7 @@ export function BusinessProductCard({
 
 export function LabCard({ product }: { product: Product }) {
   return (
-    <div className="group relative flex flex-col rounded-3xl border border-dashed border-mthd-border bg-mthd-surface/10 p-8 transition-all duration-300 hover:border-mthd-accent/40">
+    <div className="group relative flex flex-col overflow-hidden rounded-3xl border border-dashed border-mthd-border bg-mthd-surface/10 p-8 transition-all duration-300 hover:border-mthd-accent/40">
       <div className="mb-4 flex items-center justify-between gap-3">
         <StatusPill status={product.status} />
         {product.kind && (
@@ -156,6 +173,22 @@ export function LabCard({ product }: { product: Product }) {
           </span>
         )}
       </div>
+
+      {product.screenshots?.[0] && (
+        <a
+          href={`/products/${product.slug}`}
+          className="relative -mx-8 mb-6 block h-44 overflow-hidden border-y border-mthd-border"
+          tabIndex={-1}
+        >
+          <Image
+            src={product.screenshots[0].src}
+            alt={product.screenshots[0].alt}
+            fill
+            sizes="(min-width: 1024px) 400px, 100vw"
+            className="object-cover object-top"
+          />
+        </a>
+      )}
 
       <h3 className="text-2xl font-semibold tracking-tight text-white">
         {product.name}
@@ -404,16 +437,58 @@ export function ProductFAQ({ faq }: { faq: ProductFAQ[] }) {
   );
 }
 
+function WorkflowDiagram({ product }: { product: Product }) {
+  const visual = product.workflowVisual;
+  if (!visual) return null;
+
+  return (
+    <div className="rounded-3xl border border-mthd-border bg-mthd-black p-8 md:p-10">
+      {visual.note && (
+        <span className="mb-8 inline-flex items-center rounded-full border border-mthd-accent/40 bg-mthd-accent/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-mthd-accent">
+          {visual.note}
+        </span>
+      )}
+      <div className="flex flex-col items-center">
+        {visual.steps.map((step, i) => (
+          <div key={step} className="flex w-full max-w-md flex-col items-center">
+            {i > 0 && (
+              <ChevronDown
+                className="my-2 h-5 w-5 text-mthd-accent/60"
+                aria-hidden
+              />
+            )}
+            <div
+              className={`w-full rounded-2xl border px-6 py-4 text-center text-sm font-medium tracking-wide ${
+                i === 0 || i === visual.steps.length - 1
+                  ? "border-mthd-accent/50 bg-mthd-accent/10 text-white"
+                  : "border-mthd-border bg-mthd-surface/60 text-mthd-muted"
+              }`}
+            >
+              {step}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function ProductVisual({ product }: { product: Product }) {
-  const screenshot = product.screenshots?.[0];
+  const shots = product.screenshots ?? [];
+  const hasVideo = Boolean(product.demoVideo);
+  const hasWorkflow = Boolean(product.workflowVisual);
+
+  if (!hasVideo && !shots.length && !hasWorkflow) return null;
 
   return (
     <section className="bg-mthd-surface/30 py-20">
       <Container>
         <h2 className="mb-8 text-2xl font-medium text-white md:text-3xl">
-          See it in action
+          {hasWorkflow && !hasVideo && !shots.length
+            ? product.workflowVisual!.label
+            : `See ${product.name} in action`}
         </h2>
-        {product.demoVideo ? (
+        {hasVideo ? (
           <div className="relative aspect-video w-full overflow-hidden rounded-3xl border border-mthd-border bg-mthd-black">
             <video
               src={product.demoVideo}
@@ -421,48 +496,51 @@ export function ProductVisual({ product }: { product: Product }) {
               className="h-full w-full object-cover"
             />
           </div>
-        ) : screenshot ? (
-          <div className="relative aspect-video w-full overflow-hidden rounded-3xl border border-mthd-border bg-mthd-black">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={screenshot}
-              alt={`${product.name} screenshot`}
-              className="h-full w-full object-cover"
-            />
+        ) : shots.length ? (
+          <div>
+            <a
+              href={shots[0].src}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block"
+            >
+              <div className="relative aspect-video w-full overflow-hidden rounded-3xl border border-mthd-border bg-mthd-black">
+                <Image
+                  src={shots[0].src}
+                  alt={shots[0].alt}
+                  fill
+                  sizes="(min-width: 1024px) 880px, 100vw"
+                  className="object-cover object-top"
+                  priority={false}
+                />
+              </div>
+            </a>
+            {shots.length > 1 && (
+              <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-4">
+                {shots.slice(1).map((shot) => (
+                  <a
+                    key={shot.src}
+                    href={shot.src}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block"
+                  >
+                    <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-mthd-border bg-mthd-black transition-colors hover:border-mthd-accent/50">
+                      <Image
+                        src={shot.src}
+                        alt={shot.alt}
+                        fill
+                        sizes="(min-width: 768px) 220px, 50vw"
+                        className="object-cover object-top"
+                      />
+                    </div>
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
         ) : (
-          <div className="relative aspect-video w-full overflow-hidden rounded-3xl border border-mthd-border bg-mthd-black">
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 text-center">
-              <div className="h-16 w-16 rounded-2xl bg-mthd-surface p-4">
-                <div className="h-full w-full rounded-lg bg-mthd-accent/20" />
-              </div>
-              {product.demoUrl ? (
-                <>
-                  <p className="text-white">
-                    Try the interactive demo — no account needed.
-                  </p>
-                  <Button
-                    href={product.demoUrl}
-                    external
-                    variant="primary"
-                  >
-                    {product.launchLabel ?? "Try Interactive Demo"}{" "}
-                    <ExternalLink className="h-4 w-4" />
-                  </Button>
-                </>
-              ) : (
-                <>
-                  <p className="text-mthd-muted">
-                    {product.name} visuals coming soon
-                  </p>
-                  <p className="max-w-md px-6 text-sm text-mthd-muted">
-                    Screenshots and demo video slots are wired up — real assets
-                    go here when they&apos;re ready.
-                  </p>
-                </>
-              )}
-            </div>
-          </div>
+          <WorkflowDiagram product={product} />
         )}
       </Container>
     </section>
