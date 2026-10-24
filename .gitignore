@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# Environment / secrets
+.env
+.env.*
+
+# OS noise
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.log
+
+# Editor / IDE
+.vscode/
+.idea/
+.windsurf/
+*.swp
+*.swo
+
+# Vercel local link
+.vercel
+
+# TypeScript incremental cache
+tsconfig.tsbuildinfo
