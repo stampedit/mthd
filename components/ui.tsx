@@ -9,6 +9,7 @@ interface ButtonProps {
   variant?: "primary" | "secondary" | "ghost";
   onClick?: () => void;
   className?: string;
+  disabled?: boolean;
 }
 
 export function Button({
@@ -19,6 +20,7 @@ export function Button({
   variant = "primary",
   onClick,
   className = "",
+  disabled = false,
 }: ButtonProps) {
   const base =
     "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-mthd-accent/50";
@@ -48,7 +50,12 @@ export function Button({
   }
 
   return (
-    <button type={type} onClick={onClick} className={classes}>
+    <button
+      type={type}
+      onClick={onClick}
+      disabled={disabled}
+      className={`${classes} ${disabled ? "cursor-not-allowed opacity-50" : ""}`}
+    >
       {children}
     </button>
   );

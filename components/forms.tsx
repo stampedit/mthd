@@ -4,6 +4,143 @@ import { useState } from "react";
 import { Button, Container } from "./ui";
 import { getBusinessProducts } from "../lib/products";
 
+const LEAD_WEBHOOK = "https://jaystampedit.app.n8n.cloud/webhook/mthd-lead";
+
+const ERROR_MESSAGE =
+  "Something went wrong while sending your request. Please try again.";
+
+type SubmitStatus = "idle" | "submitting" | "success" | "error";
+
+interface LeadPayload {
+  formType: string;
+  product: string;
+  name: string;
+  email: string;
+  phone: string;
+  company: string;
+  interest: string;
+  whatTheyNeed: string;
+  currentTools: string;
+  budget: string;
+  timeline: string;
+  sourcePage: string;
+}
+
+function emptyPayload(formType: string, product: string): LeadPayload {
+  return {
+    formType,
+    product,
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    interest: "",
+    whatTheyNeed: "",
+    currentTools: "",
+    budget: "",
+    timeline: "",
+    sourcePage: "",
+  };
+}
+
+function useLeadSubmit() {
+  const [status, setStatus] = useState<SubmitStatus>("idle");
+  const [honeypot, setHoneypot] = useState("");
+
+  const submit = async (payload: LeadPayload) => {
+    // Honeypot filled = bot. Silently drop the submission.
+    if (honeypot) return;
+    setStatus("submitting");
+    try {
+      const res = await fetch(LEAD_WEBHOOK, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...payload,
+          sourcePage: window.location.pathname,
+        }),
+      });
+      if (!res.ok) throw new Error(`Lead webhook responded ${res.status}`);
+      setStatus("success");
+    } catch (err) {
+      console.error("[lead-submit]", err instanceof Error ? err.message : err);
+      setStatus("error");
+    }
+  };
+
+  return { status, submit, honeypot, setHoneypot, reset: () => setStatus("idle") };
+}
+
+function HoneypotField({
+  value,
+  onChange,
+}: {
+  value: string;
+  onChange: (val: string) => void;
+}) {
+  return (
+    <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+      <label htmlFor="website_url">Website</label>
+      <input
+        id="website_url"
+        name="website_url"
+        type="text"
+        tabIndex={-1}
+        autoComplete="off"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+      />
+    </div>
+  );
+}
+
+function FormSuccess({
+  message,
+  onBack,
+}: {
+  message: string;
+  onBack: () => void;
+}) {
+  return (
+    <div className="rounded-2xl border border-mthd-accent/40 bg-mthd-accent/5 p-8 text-center">
+      <h3 className="text-xl font-medium text-white">Sent.</h3>
+      <p className="mt-2 text-mthd-muted">{message}</p>
+      <div className="mt-6">
+        <Button onClick={onBack} variant="secondary">
+          Send another
+        </Button>
+      </div>
+    </div>
+  );
+}
+
+function SubmitButton({
+  status,
+  label,
+}: {
+  status: SubmitStatus;
+  label: string;
+}) {
+  return (
+    <Button
+      type="submit"
+      variant="primary"
+      className="mt-2 w-full"
+      disabled={status === "submitting"}
+    >
+      {status === "submitting" ? "Sending..." : label}
+    </Button>
+  );
+}
+
+function ErrorNote() {
+  return (
+    <p className="text-center text-sm text-red-400">{ERROR_MESSAGE}</p>
+  );
+}
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 function Input({
   label,
   name,
@@ -115,35 +252,6 @@ function TextArea({
   );
 }
 
-// Forms aren't wired to a backend yet. Be honest about it instead of
-// faking a successful submission.
-function FormOffline({ onBack }: { onBack: () => void }) {
-  return (
-    <div className="rounded-2xl border border-dashed border-mthd-border bg-mthd-surface p-8 text-center">
-      <h3 className="text-xl font-medium text-white">
-        Not sent — this form isn&apos;t connected yet.
-      </h3>
-      <p className="mt-2 text-mthd-muted">
-        Lead capture is being wired up separately. Nothing you entered was sent
-        or stored.
-      </p>
-      <div className="mt-6">
-        <Button onClick={onBack} variant="secondary">
-          Back to the form
-        </Button>
-      </div>
-    </div>
-  );
-}
-
-function OfflineNote() {
-  return (
-    <p className="text-center text-xs text-mthd-muted">
-      Submissions aren&apos;t connected yet — this form is being wired up.
-    </p>
-  );
-}
-
 const businessProductOptions = [
   ...getBusinessProducts().map((p) => p.name),
   "Something else / not sure",
@@ -157,6 +265,24 @@ const interestOptions = [
   "General Question",
 ];
 
+const FORM_TYPE_BY_INTEREST: Record<string, string> = {
+  "Join the Beta": "BETA",
+  "Join the Waitlist": "WAITLIST",
+  "Request Access": "ACCESS",
+  "Request a Demo": "DEMO",
+  "General Question": "DEMO",
+};
+
+const SUCCESS_BY_FORM_TYPE: Record<string, string> = {
+  PROJECT:
+    "Thanks — your request has been received. I'll review what you're trying to solve and follow up with you soon.",
+  BETA: "You're in. Your beta request has been received and we'll follow up with next steps.",
+  ACCESS: "Your request has been received and we'll follow up with next steps.",
+  DEMO: "Your demo request has been received. We'll follow up to coordinate the next step.",
+  WAITLIST: "You're on the list. We'll keep you updated as development continues.",
+  CLUB: "Welcome to the MTHD Club. You'll hear from us when there's something new to test.",
+};
+
 export function LeadForm({
   product,
   interest,
@@ -164,7 +290,7 @@ export function LeadForm({
   product?: string;
   interest?: string;
 }) {
-  const [submitted, setSubmitted] = useState(false);
+  const { status, submit, honeypot, setHoneypot, reset } = useLeadSubmit();
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -174,19 +300,38 @@ export function LeadForm({
     message: "",
   });
 
+  const formType = FORM_TYPE_BY_INTEREST[form.interest] ?? "ACCESS";
+  const payloadProduct =
+    form.product === "Something else / not sure" ? "MTHD" : form.product;
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Will POST to an n8n webhook in a later pass. Not connected yet.
-    console.log({ ...form });
-    setSubmitted(true);
+    if (status === "submitting") return;
+    const payload = emptyPayload(formType, payloadProduct);
+    payload.name = form.name;
+    payload.email = form.email;
+    payload.company = form.company;
+    payload.interest = form.interest;
+    payload.whatTheyNeed = form.message;
+    submit(payload);
   };
 
-  if (submitted) {
-    return <FormOffline onBack={() => setSubmitted(false)} />;
+  if (status === "success") {
+    return (
+      <FormSuccess
+        message={
+          formType === "WAITLIST"
+            ? "You're on the list. We'll keep you updated as development continues."
+            : (SUCCESS_BY_FORM_TYPE[formType] ?? SUCCESS_BY_FORM_TYPE.ACCESS)
+        }
+        onBack={reset}
+      />
+    );
   }
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+      <HoneypotField value={honeypot} onChange={setHoneypot} />
       <Input
         label="Name"
         name="name"
@@ -229,16 +374,14 @@ export function LeadForm({
         onChange={(v) => setForm((f) => ({ ...f, message: v }))}
         placeholder="Anything we should know about how you're doing it today?"
       />
-      <Button type="submit" variant="primary" className="mt-2 w-full">
-        Send Request
-      </Button>
-      <OfflineNote />
+      {status === "error" && <ErrorNote />}
+      <SubmitButton status={status} label="Send Request" />
     </form>
   );
 }
 
 export function WaitlistForm({ product }: { product: string }) {
-  const [submitted, setSubmitted] = useState(false);
+  const { status, submit, honeypot, setHoneypot, reset } = useLeadSubmit();
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -248,17 +391,27 @@ export function WaitlistForm({ product }: { product: string }) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Will POST to an n8n webhook in a later pass. Not connected yet.
-    console.log({ product, ...form });
-    setSubmitted(true);
+    if (status === "submitting") return;
+    const payload = emptyPayload("WAITLIST", product);
+    payload.name = form.name;
+    payload.email = form.email;
+    payload.company = form.company;
+    payload.whatTheyNeed = form.industry ? `Industry: ${form.industry}` : "";
+    submit(payload);
   };
 
-  if (submitted) {
-    return <FormOffline onBack={() => setSubmitted(false)} />;
+  if (status === "success") {
+    return (
+      <FormSuccess
+        message={SUCCESS_BY_FORM_TYPE.WAITLIST}
+        onBack={reset}
+      />
+    );
   }
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-5" id="waitlist">
+      <HoneypotField value={honeypot} onChange={setHoneypot} />
       <Input
         label="Name"
         name="name"
@@ -286,16 +439,14 @@ export function WaitlistForm({ product }: { product: string }) {
         value={form.industry}
         onChange={(v) => setForm((f) => ({ ...f, industry: v }))}
       />
-      <Button type="submit" variant="primary" className="mt-2 w-full">
-        Join the Waitlist
-      </Button>
-      <OfflineNote />
+      {status === "error" && <ErrorNote />}
+      <SubmitButton status={status} label="Join the Waitlist" />
     </form>
   );
 }
 
 export function BookDemoForm() {
-  const [submitted, setSubmitted] = useState(false);
+  const { status, submit, honeypot, setHoneypot, reset } = useLeadSubmit();
   const [form, setForm] = useState({
     name: "",
     company: "",
@@ -309,17 +460,33 @@ export function BookDemoForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Will POST to an n8n webhook in a later pass. Not connected yet.
-    console.log(form);
-    setSubmitted(true);
+    if (status === "submitting") return;
+    const payload = emptyPayload("DEMO", form.interest === "Not Sure" || form.interest === "Custom System" ? "MTHD" : form.interest);
+    payload.name = form.name;
+    payload.email = form.email;
+    payload.phone = form.phone;
+    payload.company = form.company;
+    payload.interest = form.interest;
+    const details = [
+      form.slowdown,
+      form.industry ? `Industry: ${form.industry}` : "",
+      form.employees ? `Employees: ${form.employees}` : "",
+    ]
+      .filter(Boolean)
+      .join("\n");
+    payload.whatTheyNeed = details;
+    submit(payload);
   };
 
-  if (submitted) {
-    return <FormOffline onBack={() => setSubmitted(false)} />;
+  if (status === "success") {
+    return (
+      <FormSuccess message={SUCCESS_BY_FORM_TYPE.DEMO} onBack={reset} />
+    );
   }
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+      <HoneypotField value={honeypot} onChange={setHoneypot} />
       <Input
         label="Name"
         name="name"
@@ -378,10 +545,8 @@ export function BookDemoForm() {
         value={form.slowdown}
         onChange={(v) => setForm((f) => ({ ...f, slowdown: v }))}
       />
-      <Button type="submit" variant="primary" className="mt-2 w-full">
-        Book a Demo
-      </Button>
-      <OfflineNote />
+      {status === "error" && <ErrorNote />}
+      <SubmitButton status={status} label="Book a Demo" />
     </form>
   );
 }
@@ -405,7 +570,7 @@ const budgetOptions = [
 ];
 
 export function ProjectForm() {
-  const [submitted, setSubmitted] = useState(false);
+  const { status, submit, honeypot, setHoneypot, reset } = useLeadSubmit();
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -420,17 +585,34 @@ export function ProjectForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Will POST to an n8n webhook in a later pass. Not connected yet.
-    console.log(form);
-    setSubmitted(true);
+    if (status === "submitting") return;
+    if (!EMAIL_RE.test(form.email)) return;
+    const payload = emptyPayload("PROJECT", "MTHD");
+    payload.name = form.name;
+    payload.email = form.email;
+    payload.company = form.company;
+    payload.interest = form.lookingFor;
+    payload.whatTheyNeed = [
+      form.problem,
+      form.website ? `Website: ${form.website}` : "",
+    ]
+      .filter(Boolean)
+      .join("\n");
+    payload.currentTools = form.currentTools;
+    payload.budget = form.budget;
+    payload.timeline = form.timeline;
+    submit(payload);
   };
 
-  if (submitted) {
-    return <FormOffline onBack={() => setSubmitted(false)} />;
+  if (status === "success") {
+    return (
+      <FormSuccess message={SUCCESS_BY_FORM_TYPE.PROJECT} onBack={reset} />
+    );
   }
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+      <HoneypotField value={honeypot} onChange={setHoneypot} />
       <Input
         label="Name"
         name="name"
@@ -495,31 +677,35 @@ export function ProjectForm() {
         onChange={(v) => setForm((f) => ({ ...f, timeline: v }))}
         placeholder="When do you need this?"
       />
-      <Button type="submit" variant="primary" className="mt-2 w-full">
-        Start the Conversation
-      </Button>
-      <OfflineNote />
+      {status === "error" && <ErrorNote />}
+      <SubmitButton status={status} label="Start the Conversation" />
     </form>
   );
 }
 
 export function ClubForm() {
-  const [submitted, setSubmitted] = useState(false);
+  const { status, submit, honeypot, setHoneypot, reset } = useLeadSubmit();
   const [form, setForm] = useState({ name: "", email: "" });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Will POST to an n8n webhook in a later pass. Not connected yet.
-    console.log({ club: true, ...form });
-    setSubmitted(true);
+    if (status === "submitting") return;
+    if (!EMAIL_RE.test(form.email)) return;
+    const payload = emptyPayload("CLUB", "MTHD Club");
+    payload.name = form.name;
+    payload.email = form.email;
+    submit(payload);
   };
 
-  if (submitted) {
-    return <FormOffline onBack={() => setSubmitted(false)} />;
+  if (status === "success") {
+    return (
+      <FormSuccess message={SUCCESS_BY_FORM_TYPE.CLUB} onBack={reset} />
+    );
   }
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+      <HoneypotField value={honeypot} onChange={setHoneypot} />
       <Input
         label="Name"
         name="name"
@@ -535,10 +721,8 @@ export function ClubForm() {
         onChange={(v) => setForm((f) => ({ ...f, email: v }))}
         required
       />
-      <Button type="submit" variant="primary" className="mt-2 w-full">
-        Join the Club
-      </Button>
-      <OfflineNote />
+      {status === "error" && <ErrorNote />}
+      <SubmitButton status={status} label="Join the Club" />
     </form>
   );
 }
