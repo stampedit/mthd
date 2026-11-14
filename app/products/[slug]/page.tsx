@@ -23,9 +23,9 @@ export function generateMetadata({
   params: { slug: string };
 }): Metadata {
   const product = getProductBySlug(params.slug);
-  if (!product) return { title: "Product | MTHD" };
+  if (!product) return { title: "Product | QORVN" };
   return {
-    title: `${product.name} | MTHD`,
+    title: `${product.name} | QORVN`,
     description: product.shortDescription,
   };
 }
@@ -45,12 +45,12 @@ export default function ProductPage({
       <ProductHero product={product} />
 
       {!isLab && (product.problem || product.explanation) && (
-        <section className="border-b border-mthd-border py-20">
+        <section className="border-b border-qorvn-border py-20">
           <Container>
             <div className="grid gap-12 lg:grid-cols-2">
               {product.problem && (
                 <div>
-                  <h2 className="mb-4 text-sm font-semibold uppercase tracking-widest text-mthd-muted">
+                  <h2 className="mb-4 text-sm font-semibold uppercase tracking-widest text-qorvn-muted">
                     The Problem
                   </h2>
                   <p className="text-lg text-white">{product.problem}</p>
@@ -58,7 +58,7 @@ export default function ProductPage({
               )}
               {product.explanation && (
                 <div>
-                  <h2 className="mb-4 text-sm font-semibold uppercase tracking-widest text-mthd-muted">
+                  <h2 className="mb-4 text-sm font-semibold uppercase tracking-widest text-qorvn-muted">
                     What it does
                   </h2>
                   <p className="text-lg text-white">{product.explanation}</p>
@@ -99,7 +99,7 @@ export default function ProductPage({
       {!isLab &&
         ((product.whoFor && product.whoFor.length > 0) ||
           (product.benefits && product.benefits.length > 0)) && (
-          <section className="border-t border-mthd-border py-20">
+          <section className="border-t border-qorvn-border py-20">
             <Container>
               <div className="grid gap-12 lg:grid-cols-2">
                 {product.whoFor && product.whoFor.length > 0 && (
@@ -113,7 +113,7 @@ export default function ProductPage({
                           key={item}
                           className="flex items-center gap-3 text-white"
                         >
-                          <span className="h-2 w-2 rounded-full bg-mthd-accent" />
+                          <span className="h-2 w-2 rounded-full bg-qorvn-accent" />
                           {item}
                         </li>
                       ))}
@@ -131,7 +131,7 @@ export default function ProductPage({
                           key={item}
                           className="flex items-center gap-3 text-white"
                         >
-                          <span className="h-2 w-2 rounded-full bg-mthd-accent" />
+                          <span className="h-2 w-2 rounded-full bg-qorvn-accent" />
                           {item}
                         </li>
                       ))}

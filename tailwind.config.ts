@@ -8,7 +8,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        mthd: {
+        qorvn: {
           black: "#0a0a0a",
           dark: "#111111",
           surface: "#171717",

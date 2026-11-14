@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button, Container } from "./ui";
 import { getBusinessProducts } from "../lib/products";
 
-const LEAD_WEBHOOK = "https://jaystampedit.app.n8n.cloud/webhook/mthd-lead";
+const LEAD_WEBHOOK = "https://jaystampedit.app.n8n.cloud/webhook/qorvn-lead";
 
 const ERROR_MESSAGE =
   "Something went wrong while sending your request. Please try again.";
@@ -102,9 +102,9 @@ function FormSuccess({
   onBack: () => void;
 }) {
   return (
-    <div className="rounded-2xl border border-mthd-accent/40 bg-mthd-accent/5 p-8 text-center">
+    <div className="rounded-2xl border border-qorvn-accent/40 bg-qorvn-accent/5 p-8 text-center">
       <h3 className="text-xl font-medium text-white">Sent.</h3>
-      <p className="mt-2 text-mthd-muted">{message}</p>
+      <p className="mt-2 text-qorvn-muted">{message}</p>
       <div className="mt-6">
         <Button onClick={onBack} variant="secondary">
           Send another
@@ -160,9 +160,9 @@ function Input({
 }) {
   return (
     <div className="flex flex-col gap-2">
-      <label htmlFor={name} className="text-sm text-mthd-muted">
+      <label htmlFor={name} className="text-sm text-qorvn-muted">
         {label}
-        {required && <span className="text-mthd-accent"> *</span>}
+        {required && <span className="text-qorvn-accent"> *</span>}
       </label>
       <input
         id={name}
@@ -172,7 +172,7 @@ function Input({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="rounded-xl border border-mthd-border bg-mthd-surface px-4 py-3 text-white placeholder:text-neutral-600 focus:border-mthd-accent focus:outline-none"
+        className="rounded-xl border border-qorvn-border bg-qorvn-surface px-4 py-3 text-white placeholder:text-neutral-600 focus:border-qorvn-accent focus:outline-none"
       />
     </div>
   );
@@ -195,9 +195,9 @@ function Select({
 }) {
   return (
     <div className="flex flex-col gap-2">
-      <label htmlFor={name} className="text-sm text-mthd-muted">
+      <label htmlFor={name} className="text-sm text-qorvn-muted">
         {label}
-        {required && <span className="text-mthd-accent"> *</span>}
+        {required && <span className="text-qorvn-accent"> *</span>}
       </label>
       <select
         id={name}
@@ -205,7 +205,7 @@ function Select({
         required={required}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="rounded-xl border border-mthd-border bg-mthd-surface px-4 py-3 text-white focus:border-mthd-accent focus:outline-none"
+        className="rounded-xl border border-qorvn-border bg-qorvn-surface px-4 py-3 text-white focus:border-qorvn-accent focus:outline-none"
       >
         {options.map((option) => (
           <option key={option} value={option}>
@@ -234,9 +234,9 @@ function TextArea({
 }) {
   return (
     <div className="flex flex-col gap-2">
-      <label htmlFor={name} className="text-sm text-mthd-muted">
+      <label htmlFor={name} className="text-sm text-qorvn-muted">
         {label}
-        {required && <span className="text-mthd-accent"> *</span>}
+        {required && <span className="text-qorvn-accent"> *</span>}
       </label>
       <textarea
         id={name}
@@ -246,7 +246,7 @@ function TextArea({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="rounded-xl border border-mthd-border bg-mthd-surface px-4 py-3 text-white placeholder:text-neutral-600 focus:border-mthd-accent focus:outline-none"
+        className="rounded-xl border border-qorvn-border bg-qorvn-surface px-4 py-3 text-white placeholder:text-neutral-600 focus:border-qorvn-accent focus:outline-none"
       />
     </div>
   );
@@ -280,7 +280,7 @@ const SUCCESS_BY_FORM_TYPE: Record<string, string> = {
   ACCESS: "Your request has been received and we'll follow up with next steps.",
   DEMO: "Your demo request has been received. We'll follow up to coordinate the next step.",
   WAITLIST: "You're on the list. We'll keep you updated as development continues.",
-  CLUB: "Welcome to the MTHD Club. You'll hear from us when there's something new to test.",
+  CLUB: "Welcome to the QORVN Club. You'll hear from us when there's something new to test.",
 };
 
 export function LeadForm({
@@ -302,7 +302,7 @@ export function LeadForm({
 
   const formType = FORM_TYPE_BY_INTEREST[form.interest] ?? "ACCESS";
   const payloadProduct =
-    form.product === "Something else / not sure" ? "MTHD" : form.product;
+    form.product === "Something else / not sure" ? "QORVN" : form.product;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -461,7 +461,7 @@ export function BookDemoForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (status === "submitting") return;
-    const payload = emptyPayload("DEMO", form.interest === "Not Sure" || form.interest === "Custom System" ? "MTHD" : form.interest);
+    const payload = emptyPayload("DEMO", form.interest === "Not Sure" || form.interest === "Custom System" ? "QORVN" : form.interest);
     payload.name = form.name;
     payload.email = form.email;
     payload.phone = form.phone;
@@ -587,7 +587,7 @@ export function ProjectForm() {
     e.preventDefault();
     if (status === "submitting") return;
     if (!EMAIL_RE.test(form.email)) return;
-    const payload = emptyPayload("PROJECT", "MTHD");
+    const payload = emptyPayload("PROJECT", "QORVN");
     payload.name = form.name;
     payload.email = form.email;
     payload.company = form.company;
@@ -691,7 +691,7 @@ export function ClubForm() {
     e.preventDefault();
     if (status === "submitting") return;
     if (!EMAIL_RE.test(form.email)) return;
-    const payload = emptyPayload("CLUB", "MTHD Club");
+    const payload = emptyPayload("CLUB", "QORVN Club");
     payload.name = form.name;
     payload.email = form.email;
     submit(payload);

@@ -23,13 +23,13 @@ export function Button({
   disabled = false,
 }: ButtonProps) {
   const base =
-    "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-mthd-accent/50";
+    "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-qorvn-accent/50";
   const variants = {
     primary:
-      "bg-white text-mthd-black hover:bg-mthd-accent hover:text-mthd-black",
+      "bg-white text-qorvn-black hover:bg-qorvn-accent hover:text-qorvn-black",
     secondary:
-      "border border-mthd-border bg-transparent text-white hover:border-mthd-accent hover:text-mthd-accent",
-    ghost: "bg-transparent text-mthd-muted hover:text-white",
+      "border border-qorvn-border bg-transparent text-white hover:border-qorvn-accent hover:text-qorvn-accent",
+    ghost: "bg-transparent text-qorvn-muted hover:text-white",
   };
   const classes = `${base} ${variants[variant]} ${className}`;
 
@@ -83,7 +83,7 @@ export function Logo({ className = "" }: { className?: string }) {
       href="/"
       className={`text-xl font-semibold tracking-tight text-white ${className}`}
     >
-      MTHD<span className="text-mthd-accent">.</span>
+      QORVN<span className="text-qorvn-accent">.</span>
     </Link>
   );
 }
@@ -105,5 +105,5 @@ export function Section({
 }
 
 export function Divider() {
-  return <div className="h-px w-full bg-mthd-border" />;
+  return <div className="h-px w-full bg-qorvn-border" />;
 }

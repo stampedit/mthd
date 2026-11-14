@@ -11,12 +11,12 @@ html {
 }
 
 body {
-  @apply bg-mthd-black text-white antialiased;
+  @apply bg-qorvn-black text-white antialiased;
   font-family: var(--font-inter);
 }
 
 ::selection {
-  @apply bg-mthd-accent/30 text-white;
+  @apply bg-qorvn-accent/30 text-white;
 }
 
 @layer utilities {

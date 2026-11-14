@@ -4,9 +4,9 @@ import { LeadForm } from "../../components/forms";
 import { getProductBySlug } from "../../lib/products";
 
 export const metadata: Metadata = {
-  title: "Request Access | MTHD",
+  title: "Request Access | QORVN",
   description:
-    "Join the beta or request access for MTHD products — ProfitPilot, CrewCheck, and StockFlow Pro.",
+    "Join the beta or request access for QORVN products — ProfitPilot, CrewCheck, and StockFlow Pro.",
 };
 
 const intentMap: Record<string, string> = {
@@ -36,7 +36,7 @@ export default function AccessPage({
             <h1 className="text-4xl font-semibold tracking-tight text-white md:text-5xl">
               REQUEST ACCESS.
             </h1>
-            <p className="mt-4 text-lg text-mthd-muted">
+            <p className="mt-4 text-lg text-qorvn-muted">
               {product
                 ? `Tell us a bit about you and we'll reach out about ${product.name}.`
                 : "Tell us what you want access to and we'll reach out."}

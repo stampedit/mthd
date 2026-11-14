@@ -11,22 +11,22 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "MTHD | Better Systems for Growing Businesses",
+  title: "QORVN | Better Systems for Growing Businesses",
   description:
-    "MTHD builds software, automation, and custom systems that help businesses simplify operations and grow without the chaos.",
-  metadataBase: new URL("https://mthd.io"),
+    "QORVN builds software, automation, and custom systems that help businesses simplify operations and grow without the chaos.",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
   openGraph: {
-    title: "MTHD | Better Systems for Growing Businesses",
+    title: "QORVN | Better Systems for Growing Businesses",
     description:
-      "MTHD builds software, automation, and custom systems that help businesses simplify operations and grow without the chaos.",
+      "QORVN builds software, automation, and custom systems that help businesses simplify operations and grow without the chaos.",
     type: "website",
-    siteName: "MTHD",
+    siteName: "QORVN",
   },
   twitter: {
     card: "summary_large_image",
-    title: "MTHD | Better Systems for Growing Businesses",
+    title: "QORVN | Better Systems for Growing Businesses",
     description:
-      "MTHD builds software, automation, and custom systems that help businesses simplify operations and grow without the chaos.",
+      "QORVN builds software, automation, and custom systems that help businesses simplify operations and grow without the chaos.",
   },
   robots: {
     index: true,
@@ -41,7 +41,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.variable}>
-      <body className="min-h-screen bg-mthd-black text-white">
+      <body className="min-h-screen bg-qorvn-black text-white">
         <Header />
         <main>{children}</main>
         <Footer />
