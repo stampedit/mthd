@@ -4,9 +4,9 @@ import { BusinessProductCard, LabCard } from "../../components/products";
 import { getBusinessProducts, getLabProducts } from "../../lib/products";
 
 export const metadata: Metadata = {
-  title: "Products | MTHD",
+  title: "Products | QORVN",
   description:
-    "Built by MTHD: business software for operations, field teams, and inventory — plus experiments from the MTHD Lab.",
+    "Built by QORVN: business software for operations, field teams, and inventory — plus experiments from the QORVN Lab.",
 };
 
 export default function ProductsPage() {
@@ -18,10 +18,10 @@ export default function ProductsPage() {
       <Container>
         <div className="mb-16 max-w-3xl">
           <h1 className="text-4xl font-semibold tracking-tight text-white md:text-6xl">
-            BUILT BY MTHD.
+            BUILT BY QORVN.
           </h1>
-          <p className="mt-4 text-xl text-mthd-accent md:text-2xl">
-            Different problems. Better MTHDs.
+          <p className="mt-4 text-xl text-qorvn-accent md:text-2xl">
+            Different problems. Better systems.
           </p>
         </div>
 
@@ -29,7 +29,7 @@ export default function ProductsPage() {
           <h2 className="text-2xl font-medium text-white md:text-3xl">
             Products
           </h2>
-          <p className="mt-2 text-mthd-muted">
+          <p className="mt-2 text-qorvn-muted">
             Systems for real operations. Request access and we&apos;ll reach out
             to talk through fit.
           </p>
@@ -47,9 +47,9 @@ export default function ProductsPage() {
 
         <div id="lab" className="mb-10 mt-24 max-w-3xl scroll-mt-24">
           <h2 className="text-2xl font-medium text-white md:text-3xl">
-            MTHD Lab
+            QORVN Lab
           </h2>
-          <p className="mt-2 text-mthd-muted">
+          <p className="mt-2 text-qorvn-muted">
             Where ideas become things you can actually use. Launch them right
             here — no pitch required.
           </p>
@@ -60,9 +60,9 @@ export default function ProductsPage() {
           ))}
         </div>
 
-        <p className="mt-16 text-center text-mthd-muted">
+        <p className="mt-16 text-center text-qorvn-muted">
           More products are on the way. Check back or{" "}
-          <a href="/start" className="text-mthd-accent hover:underline">
+          <a href="/start" className="text-qorvn-accent hover:underline">
             tell us what you need
           </a>
           .

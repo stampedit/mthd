@@ -8,9 +8,9 @@ import HeroVisual from "../components/HeroVisual";
 import CustomSystems from "../components/CustomSystems";
 
 export const metadata: Metadata = {
-  title: "MTHD | Better Systems for Growing Businesses",
+  title: "QORVN | Better Systems for Growing Businesses",
   description:
-    "MTHD builds software, automation, and custom systems that help businesses simplify operations and grow without the chaos.",
+    "QORVN builds software, automation, and custom systems that help businesses simplify operations and grow without the chaos.",
 };
 
 const whatWeBuild = [
@@ -27,11 +27,11 @@ const whatWeBuild = [
   {
     title: "Digital Products",
     description:
-      "Games and apps from the MTHD Lab — ideas turned into things you can actually use.",
+      "Games and apps from the QORVN Lab — ideas turned into things you can actually use.",
   },
 ];
 
-const mthdSteps = [
+const processSteps = [
   { step: "01", title: "Find the problem", desc: "Show us how you're doing it now." },
   { step: "02", title: "Simplify", desc: "Figure out what actually needs to happen." },
   { step: "03", title: "Build", desc: "Build the system around the way the business works." },
@@ -68,21 +68,21 @@ export default function HomePage() {
 
   return (
     <>
-      <section className="relative flex min-h-[calc(100vh-73px)] items-center border-b border-mthd-border">
+      <section className="relative flex min-h-[calc(100vh-73px)] items-center border-b border-qorvn-border">
         <Container>
           <div className="grid items-center gap-16 lg:grid-cols-2">
             <div className="max-w-2xl">
               <h1 className="text-5xl font-semibold leading-[1.1] tracking-tight text-white md:text-7xl lg:text-8xl">
-                THERE&apos;S A MTHD
+                THERE&apos;S A QORVN
                 <br />
                 TO GROWTH.
               </h1>
-              <p className="mt-8 text-xl leading-relaxed text-mthd-muted md:text-2xl">
+              <p className="mt-8 text-xl leading-relaxed text-qorvn-muted md:text-2xl">
                 We find what&apos;s slowing your business down and build a better
                 way to do it.
               </p>
-              <p className="mt-4 max-w-xl text-mthd-muted">
-                From scheduling and operations to sales and custom systems, MTHD
+              <p className="mt-4 max-w-xl text-qorvn-muted">
+                From scheduling and operations to sales and custom systems, QORVN
                 builds technology around real business problems.
               </p>
               <div className="mt-10 flex flex-wrap gap-4">
@@ -108,12 +108,12 @@ export default function HomePage() {
             <p className="text-3xl font-medium text-white md:text-5xl">
               &quot;There has to be an easier way to do this.&quot;
             </p>
-            <p className="mt-6 text-2xl text-mthd-accent md:text-4xl">
+            <p className="mt-6 text-2xl text-qorvn-accent md:text-4xl">
               There probably is.
             </p>
           </div>
 
-          <div className="mt-16 max-w-2xl text-lg leading-relaxed text-mthd-muted">
+          <div className="mt-16 max-w-2xl text-lg leading-relaxed text-qorvn-muted">
             <p className="mb-4">Businesses grow.</p>
             <p className="mb-4">More customers come in.</p>
             <p className="mb-4">More employees get hired.</p>
@@ -123,20 +123,20 @@ export default function HomePage() {
               disconnected apps that used to work start creating more work.
             </p>
             <p className="text-white">
-              That&apos;s where MTHD comes in. We find the parts of your business
+              That&apos;s where QORVN comes in. We find the parts of your business
               that are taking too much time and build a better way to handle them.
             </p>
           </div>
         </Container>
       </Section>
 
-      <Section className="border-t border-mthd-border">
+      <Section className="border-t border-qorvn-border">
         <Container>
           <div className="mb-16 max-w-3xl">
             <h2 className="text-4xl font-semibold tracking-tight text-white md:text-6xl">
               WHAT WE BUILD.
             </h2>
-            <p className="mt-4 text-xl text-mthd-accent md:text-2xl">
+            <p className="mt-4 text-xl text-qorvn-accent md:text-2xl">
               Real problems → practical ideas → working products.
             </p>
           </div>
@@ -145,26 +145,26 @@ export default function HomePage() {
             {whatWeBuild.map((item) => (
               <div
                 key={item.title}
-                className="rounded-2xl border border-mthd-border bg-mthd-surface/20 p-8"
+                className="rounded-2xl border border-qorvn-border bg-qorvn-surface/20 p-8"
               >
                 <h3 className="text-xl font-medium text-white">{item.title}</h3>
-                <p className="mt-3 text-mthd-muted">{item.description}</p>
+                <p className="mt-3 text-qorvn-muted">{item.description}</p>
               </div>
             ))}
           </div>
         </Container>
       </Section>
 
-      <Section className="border-t border-mthd-border bg-mthd-surface/20">
+      <Section className="border-t border-qorvn-border bg-qorvn-surface/20">
         <Container>
           <div className="mb-16 max-w-3xl">
             <h2 className="text-4xl font-semibold tracking-tight text-white md:text-6xl">
               FEATURED PRODUCTS.
             </h2>
-            <p className="mt-4 text-xl text-mthd-accent md:text-2xl">
-              Different problems. Better MTHDs.
+            <p className="mt-4 text-xl text-qorvn-accent md:text-2xl">
+              Different problems. Better systems.
             </p>
-            <p className="mt-4 max-w-2xl text-mthd-muted">
+            <p className="mt-4 max-w-2xl text-qorvn-muted">
               Built for real operations. Join the beta or request access to try
               them with your business.
             </p>
@@ -183,28 +183,28 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      <Section className="border-t border-mthd-border">
+      <Section className="border-t border-qorvn-border">
         <Container>
           <div className="mb-16 max-w-3xl">
             <h2 className="text-4xl font-semibold tracking-tight text-white md:text-5xl">
-              THE MTHD
+              THE PROCESS
             </h2>
-            <p className="mt-4 text-lg text-mthd-muted">
+            <p className="mt-4 text-lg text-qorvn-muted">
               We don&apos;t start with technology. We start with the problem.
             </p>
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
-            {mthdSteps.map((item) => (
+            {processSteps.map((item) => (
               <div
                 key={item.step}
-                className="rounded-2xl border border-mthd-border bg-mthd-surface/20 p-6"
+                className="rounded-2xl border border-qorvn-border bg-qorvn-surface/20 p-6"
               >
-                <span className="text-mthd-accent">{item.step}</span>
+                <span className="text-qorvn-accent">{item.step}</span>
                 <h3 className="mt-3 text-lg font-medium text-white">
                   {item.title}
                 </h3>
-                <p className="mt-2 text-sm text-mthd-muted">{item.desc}</p>
+                <p className="mt-2 text-sm text-qorvn-muted">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -214,7 +214,7 @@ export default function HomePage() {
               Find the problem. Build the system. Put it to work.
             </p>
             <div className="mt-6">
-              <Button href="/the-mthd" variant="secondary">
+              <Button href="/process" variant="secondary">
                 Learn the Process
               </Button>
             </div>
@@ -224,17 +224,17 @@ export default function HomePage() {
 
       <Section
         id="lab"
-        className="border-t border-mthd-border bg-mthd-surface/20"
+        className="border-t border-qorvn-border bg-qorvn-surface/20"
       >
         <Container>
           <div className="mb-16 max-w-3xl">
             <h2 className="text-4xl font-semibold tracking-tight text-white md:text-6xl">
-              MTHD LAB.
+              QORVN LAB.
             </h2>
-            <p className="mt-4 text-xl text-mthd-accent md:text-2xl">
+            <p className="mt-4 text-xl text-qorvn-accent md:text-2xl">
               Where ideas become things you can actually use.
             </p>
-            <p className="mt-4 max-w-2xl text-mthd-muted">
+            <p className="mt-4 max-w-2xl text-qorvn-muted">
               Experiments, games, and tools built for the fun of it — launch them
               straight from here.
             </p>
@@ -254,13 +254,13 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      <Section className="border-t border-mthd-border">
+      <Section className="border-t border-qorvn-border">
         <Container>
           <div className="mb-16 max-w-3xl">
             <h2 className="text-4xl font-semibold tracking-tight text-white md:text-5xl">
-              BUILD WITH MTHD.
+              BUILD WITH QORVN.
             </h2>
-            <p className="mt-4 text-lg text-mthd-muted">
+            <p className="mt-4 text-lg text-qorvn-muted">
               Sometimes the right answer isn&apos;t another off-the-shelf tool.
             </p>
           </div>
@@ -269,10 +269,10 @@ export default function HomePage() {
             {buildWith.map((item) => (
               <div
                 key={item.title}
-                className="rounded-2xl border border-mthd-border bg-mthd-surface/20 p-6"
+                className="rounded-2xl border border-qorvn-border bg-qorvn-surface/20 p-6"
               >
                 <h3 className="text-lg font-medium text-white">{item.title}</h3>
-                <p className="mt-2 text-sm text-mthd-muted">
+                <p className="mt-2 text-sm text-qorvn-muted">
                   {item.description}
                 </p>
               </div>
@@ -290,22 +290,22 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      <Section className="border-t border-mthd-border bg-mthd-surface/20">
+      <Section className="border-t border-qorvn-border bg-qorvn-surface/20">
         <Container>
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
               <h2 className="text-3xl font-semibold tracking-tight text-white md:text-5xl">
-                MTHD CLUB.
+                QORVN CLUB.
               </h2>
-              <p className="mt-2 text-xl text-mthd-accent">
+              <p className="mt-2 text-xl text-qorvn-accent">
                 Want to test what we&apos;re building next?
               </p>
-              <p className="mt-4 max-w-md leading-relaxed text-mthd-muted">
-                Join the MTHD Club for early access to apps, games, prototypes,
-                and new MTHD experiments — before they go public.
+              <p className="mt-4 max-w-md leading-relaxed text-qorvn-muted">
+                Join the QORVN Club for early access to apps, games, prototypes,
+                and new QORVN experiments — before they go public.
               </p>
             </div>
-            <div className="rounded-3xl border border-mthd-border bg-mthd-black p-8">
+            <div className="rounded-3xl border border-qorvn-border bg-qorvn-black p-8">
               <ClubForm />
             </div>
           </div>

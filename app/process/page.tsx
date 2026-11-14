@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Button, Container } from "../../components/ui";
 
 export const metadata: Metadata = {
-  title: "The MTHD | MTHD",
+  title: "Process | QORVN",
   description:
-    "The MTHD process: find the problem, simplify, build, put it to work, and improve.",
+    "The QORVN process: find the problem, simplify, build, put it to work, and improve.",
 };
 
 const steps = [
@@ -35,15 +35,15 @@ const steps = [
   },
 ];
 
-export default function TheMthdPage() {
+export default function ProcessPage() {
   return (
     <section className="pb-24 pt-16 md:pt-24">
       <Container>
         <div className="mb-16 max-w-3xl">
           <h1 className="text-4xl font-semibold tracking-tight text-white md:text-6xl">
-            THE MTHD
+            THE PROCESS
           </h1>
-          <p className="mt-6 text-xl leading-relaxed text-mthd-muted">
+          <p className="mt-6 text-xl leading-relaxed text-qorvn-muted">
             We don&apos;t start with technology.{" "}
             <span className="text-white">We start with the problem.</span>
           </p>
@@ -53,20 +53,20 @@ export default function TheMthdPage() {
           {steps.map((step) => (
             <div
               key={step.number}
-              className="rounded-2xl border border-mthd-border bg-mthd-surface/20 p-8"
+              className="rounded-2xl border border-qorvn-border bg-qorvn-surface/20 p-8"
             >
-              <span className="text-3xl font-medium text-mthd-accent">
+              <span className="text-3xl font-medium text-qorvn-accent">
                 {step.number}
               </span>
               <h2 className="mt-4 text-xl font-medium text-white">
                 {step.title}
               </h2>
-              <p className="mt-2 text-mthd-muted">{step.description}</p>
+              <p className="mt-2 text-qorvn-muted">{step.description}</p>
             </div>
           ))}
         </div>
 
-        <div className="mt-20 rounded-3xl border border-mthd-border bg-mthd-surface/30 p-8 text-center md:p-16">
+        <div className="mt-20 rounded-3xl border border-qorvn-border bg-qorvn-surface/30 p-8 text-center md:p-16">
           <p className="text-2xl font-medium text-white md:text-3xl">
             Find the problem.
             <br />

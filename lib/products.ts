@@ -322,7 +322,7 @@ export const products: Product[] = [
       },
     ],
     origin:
-      "StockFlow Pro is an independent MTHD prototype inspired by real inventory and field workflow problems.",
+      "StockFlow Pro is an independent QORVN prototype inspired by real inventory and field workflow problems.",
     problem:
       "Physical inventory counts involve multiple roles, multiple data sources, and a lot of back-and-forth — discrepancies get resolved over calls and messages, and recounts are hard to target and track.",
     explanation:
@@ -382,7 +382,7 @@ export const products: Product[] = [
       },
       {
         q: "Is StockFlow Pro an official product of another company?",
-        a: "No. StockFlow Pro is an independent MTHD prototype inspired by real inventory and field workflow problems.",
+        a: "No. StockFlow Pro is an independent QORVN prototype inspired by real inventory and field workflow problems.",
       },
     ],
     demoUrl: "https://stockflow-pro-bice.vercel.app",
@@ -401,7 +401,7 @@ export const products: Product[] = [
   },
 
   // -------------------------
-  // MTHD LAB
+  // QORVN LAB
   // -------------------------
   {
     name: "Neon Bricks",
@@ -412,9 +412,9 @@ export const products: Product[] = [
     releaseStatus: "PLAYABLE",
     tagline: "Stack it. Don't drop it.",
     shortDescription:
-      "A stacking game from the MTHD Lab — time your drops, build combos, and collect power-ups. Plays on desktop and mobile.",
+      "A stacking game from the QORVN Lab — time your drops, build combos, and collect power-ups. Plays on desktop and mobile.",
     longDescription:
-      "Neon Bricks is a fast arcade stacking game built in the MTHD Lab. Drop blocks on the stack, chain combos, collect power-ups, unlock themes, and chase the high score — on desktop or touch.",
+      "Neon Bricks is a fast arcade stacking game built in the QORVN Lab. Drop blocks on the stack, chain combos, collect power-ups, unlock themes, and chase the high score — on desktop or touch.",
     kind: "Game",
     launchLabel: "Play Now",
     hasInteractiveDemo: true,
@@ -441,9 +441,9 @@ export const products: Product[] = [
     releaseStatus: "PLAYABLE",
     tagline: "Fun learning for kids.",
     shortDescription:
-      "A kids' learning adventure from the MTHD Lab — three worlds covering counting, math, and letters, with stars, levels, and speed modes.",
+      "A kids' learning adventure from the QORVN Lab — three worlds covering counting, math, and letters, with stars, levels, and speed modes.",
     longDescription:
-      "Brain Quest (BrainQuest Adventure) is a kids' learning game from the MTHD Lab. Pick a world — Jungle, Space, or Castle — answer questions, earn stars, and unlock levels across Learn, Speed, and Mixed modes.",
+      "Brain Quest (BrainQuest Adventure) is a kids' learning game from the QORVN Lab. Pick a world — Jungle, Space, or Castle — answer questions, earn stars, and unlock levels across Learn, Speed, and Mixed modes.",
     kind: "Kids / Learning Game",
     launchLabel: "Play Now",
     hasInteractiveDemo: true,
@@ -476,11 +476,11 @@ export const products: Product[] = [
     listed: true,
     status: "prototype",
     releaseStatus: "PROTOTYPE",
-    tagline: "A fitness project from the MTHD Lab.",
+    tagline: "A fitness project from the QORVN Lab.",
     shortDescription:
-      "A fitness app from the MTHD Lab — generate workouts by goal, equipment, and time, then track progress, meals, and hydration. Runs entirely on your device.",
+      "A fitness app from the QORVN Lab — generate workouts by goal, equipment, and time, then track progress, meals, and hydration. Runs entirely on your device.",
     longDescription:
-      "GymFlow is a fitness app built in the MTHD Lab. It generates workouts from your goal, equipment, and available time, includes exercise guides, meal plans, progress charts, streaks, and a water tracker — all stored locally on your device.",
+      "GymFlow is a fitness app built in the QORVN Lab. It generates workouts from your goal, equipment, and available time, includes exercise guides, meal plans, progress charts, streaks, and a water tracker — all stored locally on your device.",
     kind: "Fitness",
     launchLabel: "Try GymFlow",
     hasInteractiveDemo: true,
@@ -604,7 +604,7 @@ export const products: Product[] = [
     ],
   },
   {
-    name: "MTHD Schedule",
+    name: "QORVN Schedule",
     slug: "schedule",
     category: "business",
     listed: true,
@@ -614,7 +614,7 @@ export const products: Product[] = [
     shortDescription:
       "A scheduling system for service businesses that collects employee availability, organizes jobs, creates assignments, handles manager approval, and sends schedules to employees.",
     longDescription:
-      "MTHD Schedule takes the weekly schedule off your plate. Employees submit availability, you enter the jobs that need coverage, and the system helps match people to shifts and routes the result through manager approval before sending it out.",
+      "QORVN Schedule takes the weekly schedule off your plate. Employees submit availability, you enter the jobs that need coverage, and the system helps match people to shifts and routes the result through manager approval before sending it out.",
     tagline: "Stop building the weekly schedule by hand.",
     features: [
       "Employee availability collection",
@@ -626,7 +626,7 @@ export const products: Product[] = [
     ],
     logo: "Schedule",
     workflowVisual: {
-      label: "How MTHD Schedule works",
+      label: "How QORVN Schedule works",
       steps: [
         "Employee Availability",
         "Available Jobs",
@@ -642,7 +642,7 @@ export const products: Product[] = [
     problem:
       "Building weekly schedules with texts, group chats, spreadsheets, and individual messages. Changes get missed, coverage gaps happen, and managers lose time.",
     explanation:
-      "MTHD Schedule gives you one place to collect availability, list jobs, match assignments, review the result, and send the final schedule to employees.",
+      "QORVN Schedule gives you one place to collect availability, list jobs, match assignments, review the result, and send the final schedule to employees.",
     howItWorks: [
       {
         step: "STEP 1",
@@ -688,7 +688,7 @@ export const products: Product[] = [
     ],
     faq: [
       {
-        q: "Can MTHD Schedule replace our spreadsheets?",
+        q: "Can QORVN Schedule replace our spreadsheets?",
         a: "Yes. It is designed to replace the mix of spreadsheets, texts, and manual assignments most businesses use today.",
       },
       {

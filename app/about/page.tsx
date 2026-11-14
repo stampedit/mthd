@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Container } from "../../components/ui";
 
 export const metadata: Metadata = {
-  title: "About | MTHD",
-  description: "Why MTHD exists: real problems, real businesses, better systems.",
+  title: "About | QORVN",
+  description: "Why QORVN exists: real problems, real businesses, better systems.",
 };
 
 export default function AboutPage() {
@@ -12,13 +12,13 @@ export default function AboutPage() {
       <Container>
         <div className="mb-16 max-w-3xl">
           <h1 className="text-4xl font-semibold tracking-tight text-white md:text-6xl">
-            WHY MTHD EXISTS.
+            WHY QORVN EXISTS.
           </h1>
         </div>
 
-        <div className="max-w-3xl space-y-6 text-lg leading-relaxed text-mthd-muted">
+        <div className="max-w-3xl space-y-6 text-lg leading-relaxed text-qorvn-muted">
           <p>
-            MTHD started from solving real problems while running and working
+            QORVN started from solving real problems while running and working
             inside businesses.
           </p>
           <p>Scheduling people. Managing jobs. Finding customers. Following up.</p>
@@ -34,7 +34,7 @@ export default function AboutPage() {
             </span>
           </p>
           <p>We started building those systems.</p>
-          <p>That&apos;s what became MTHD.</p>
+          <p>That&apos;s what became QORVN.</p>
           <p className="text-white">Now we build them for other businesses.</p>
         </div>
       </Container>

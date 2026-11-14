@@ -24,8 +24,8 @@ export function StatusPill({ status }: { status: ProductStatus }) {
     <span
       className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold tracking-wide ${
         isLive
-          ? "border-mthd-accent/40 bg-mthd-accent/10 text-mthd-accent"
-          : "border-mthd-border bg-mthd-surface text-mthd-muted"
+          ? "border-qorvn-accent/40 bg-qorvn-accent/10 text-qorvn-accent"
+          : "border-qorvn-border bg-qorvn-surface text-qorvn-muted"
       }`}
     >
       {label}
@@ -75,15 +75,15 @@ export function BusinessProductCard({
 }) {
   if (featured) {
     return (
-      <div className="group relative grid gap-8 rounded-3xl border border-mthd-accent/60 bg-gradient-to-b from-mthd-surface to-mthd-black p-8 transition-all duration-300 hover:border-mthd-accent/40 md:grid-cols-2 md:p-10">
+      <div className="group relative grid gap-8 rounded-3xl border border-qorvn-accent/60 bg-gradient-to-b from-qorvn-surface to-qorvn-black p-8 transition-all duration-300 hover:border-qorvn-accent/40 md:grid-cols-2 md:p-10">
         <div>
           <div className="mb-4 flex items-center gap-3">
             <StatusPill status={product.status} />
-            <span className="text-xs font-medium text-mthd-accent">
+            <span className="text-xs font-medium text-qorvn-accent">
               Primary Product
             </span>
             {product.kind && (
-              <span className="text-xs font-medium uppercase tracking-widest text-mthd-muted">
+              <span className="text-xs font-medium uppercase tracking-widest text-qorvn-muted">
                 {product.kind}
               </span>
             )}
@@ -91,9 +91,9 @@ export function BusinessProductCard({
           <h3 className="text-2xl font-semibold tracking-tight text-white md:text-3xl">
             {product.name}
           </h3>
-          <p className="mt-1 text-lg text-mthd-accent">{product.tagline}</p>
+          <p className="mt-1 text-lg text-qorvn-accent">{product.tagline}</p>
           {product.problem && (
-            <p className="mt-4 text-sm text-mthd-muted">
+            <p className="mt-4 text-sm text-qorvn-muted">
               <span className="font-medium text-white">The problem: </span>
               {product.problem}
             </p>
@@ -101,8 +101,8 @@ export function BusinessProductCard({
         </div>
         <div className="flex flex-col justify-between">
           {product.explanation && (
-            <p className="text-sm text-mthd-muted">
-              <span className="font-medium text-white">The MTHD: </span>
+            <p className="text-sm text-qorvn-muted">
+              <span className="font-medium text-white">The approach: </span>
               {product.explanation}
             </p>
           )}
@@ -113,11 +113,11 @@ export function BusinessProductCard({
   }
 
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded-3xl border border-mthd-border bg-mthd-surface/30 p-8 transition-all duration-300 hover:border-mthd-accent/40">
+    <div className="group relative flex flex-col overflow-hidden rounded-3xl border border-qorvn-border bg-qorvn-surface/30 p-8 transition-all duration-300 hover:border-qorvn-accent/40">
       <div className="mb-4 flex items-center justify-between gap-3">
         <StatusPill status={product.status} />
         {product.kind && (
-          <span className="text-xs font-medium uppercase tracking-widest text-mthd-muted">
+          <span className="text-xs font-medium uppercase tracking-widest text-qorvn-muted">
             {product.kind}
           </span>
         )}
@@ -126,7 +126,7 @@ export function BusinessProductCard({
       {product.screenshots?.[0] && (
         <a
           href={`/products/${product.slug}`}
-          className="relative -mx-8 mb-6 block h-44 overflow-hidden border-y border-mthd-border"
+          className="relative -mx-8 mb-6 block h-44 overflow-hidden border-y border-qorvn-border"
           tabIndex={-1}
         >
           <Image
@@ -142,17 +142,17 @@ export function BusinessProductCard({
       <h3 className="text-2xl font-semibold tracking-tight text-white">
         {product.name}
       </h3>
-      <p className="mt-1 text-lg text-mthd-accent">{product.tagline}</p>
+      <p className="mt-1 text-lg text-qorvn-accent">{product.tagline}</p>
 
       {product.problem && (
-        <p className="mt-4 text-sm text-mthd-muted">
+        <p className="mt-4 text-sm text-qorvn-muted">
           <span className="font-medium text-white">The problem: </span>
           {product.problem}
         </p>
       )}
       {product.explanation && (
-        <p className="mt-3 flex-grow text-sm text-mthd-muted">
-          <span className="font-medium text-white">The MTHD: </span>
+        <p className="mt-3 flex-grow text-sm text-qorvn-muted">
+          <span className="font-medium text-white">The approach: </span>
           {product.explanation}
         </p>
       )}
@@ -164,11 +164,11 @@ export function BusinessProductCard({
 
 export function LabCard({ product }: { product: Product }) {
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded-3xl border border-dashed border-mthd-border bg-mthd-surface/10 p-8 transition-all duration-300 hover:border-mthd-accent/40">
+    <div className="group relative flex flex-col overflow-hidden rounded-3xl border border-dashed border-qorvn-border bg-qorvn-surface/10 p-8 transition-all duration-300 hover:border-qorvn-accent/40">
       <div className="mb-4 flex items-center justify-between gap-3">
         <StatusPill status={product.status} />
         {product.kind && (
-          <span className="text-xs font-medium uppercase tracking-widest text-mthd-muted">
+          <span className="text-xs font-medium uppercase tracking-widest text-qorvn-muted">
             {product.kind}
           </span>
         )}
@@ -177,7 +177,7 @@ export function LabCard({ product }: { product: Product }) {
       {product.screenshots?.[0] && (
         <a
           href={`/products/${product.slug}`}
-          className="relative -mx-8 mb-6 block h-44 overflow-hidden border-y border-mthd-border"
+          className="relative -mx-8 mb-6 block h-44 overflow-hidden border-y border-qorvn-border"
           tabIndex={-1}
         >
           <Image
@@ -193,7 +193,7 @@ export function LabCard({ product }: { product: Product }) {
       <h3 className="text-2xl font-semibold tracking-tight text-white">
         {product.name}
       </h3>
-      <p className="mt-4 flex-grow text-mthd-muted">
+      <p className="mt-4 flex-grow text-qorvn-muted">
         {product.shortDescription}
       </p>
 
@@ -203,7 +203,7 @@ export function LabCard({ product }: { product: Product }) {
             {product.launchLabel ?? "Launch"} <ExternalLink className="h-4 w-4" />
           </Button>
         ) : (
-          <span className="inline-flex items-center rounded-full border border-dashed border-mthd-border px-6 py-3 text-sm font-medium text-mthd-muted">
+          <span className="inline-flex items-center rounded-full border border-dashed border-qorvn-border px-6 py-3 text-sm font-medium text-qorvn-muted">
             Coming Soon — link pending
           </span>
         )}
@@ -219,28 +219,28 @@ export function ProductHero({ product }: { product: Product }) {
   const isLab = product.category === "lab";
 
   return (
-    <section className="border-b border-mthd-border pb-24 pt-16 md:pt-24">
+    <section className="border-b border-qorvn-border pb-24 pt-16 md:pt-24">
       <Container>
         <div className="max-w-3xl">
           <div className="mb-6 flex flex-wrap items-center gap-4">
             <StatusPill status={product.status} />
-            <span className="text-xs font-medium uppercase tracking-widest text-mthd-muted">
+            <span className="text-xs font-medium uppercase tracking-widest text-qorvn-muted">
               {isLab
                 ? product.kind
-                  ? `MTHD Lab — ${product.kind}`
-                  : "A MTHD Lab project"
-                : product.kind ?? "MTHD Product"}
+                  ? `QORVN Lab — ${product.kind}`
+                  : "A QORVN Lab project"
+                : product.kind ?? "QORVN Product"}
             </span>
           </div>
           <h1 className="text-4xl font-semibold leading-tight tracking-tight text-white md:text-6xl">
             {product.tagline}
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-mthd-muted md:text-xl">
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-qorvn-muted md:text-xl">
             {product.longDescription}
           </p>
 
           {!product.listed && (
-            <p className="mt-6 inline-block rounded-xl border border-dashed border-mthd-border px-4 py-3 text-sm text-mthd-muted">
+            <p className="mt-6 inline-block rounded-xl border border-dashed border-qorvn-border px-4 py-3 text-sm text-qorvn-muted">
               This product isn&apos;t in the current public lineup — this page is
               kept for reference.
             </p>
@@ -254,7 +254,7 @@ export function ProductHero({ product }: { product: Product }) {
                   <ExternalLink className="h-4 w-4" />
                 </Button>
               ) : (
-                <span className="inline-flex items-center rounded-full border border-dashed border-mthd-border px-6 py-3 text-sm font-medium text-mthd-muted">
+                <span className="inline-flex items-center rounded-full border border-dashed border-qorvn-border px-6 py-3 text-sm font-medium text-qorvn-muted">
                   Coming Soon — link pending
                 </span>
               )
@@ -291,11 +291,11 @@ export function ProductOrigin({ origin }: { origin: string }) {
   return (
     <section className="py-12">
       <Container>
-        <div className="max-w-3xl rounded-2xl border border-mthd-border bg-mthd-surface/20 p-6">
-          <h2 className="text-sm font-semibold uppercase tracking-widest text-mthd-muted">
+        <div className="max-w-3xl rounded-2xl border border-qorvn-border bg-qorvn-surface/20 p-6">
+          <h2 className="text-sm font-semibold uppercase tracking-widest text-qorvn-muted">
             Where it came from
           </h2>
-          <p className="mt-3 text-mthd-muted">{origin}</p>
+          <p className="mt-3 text-qorvn-muted">{origin}</p>
         </div>
       </Container>
     </section>
@@ -304,7 +304,7 @@ export function ProductOrigin({ origin }: { origin: string }) {
 
 export function ProductSteps({ steps }: { steps: ProductStep[] }) {
   return (
-    <section className="bg-mthd-surface/30 py-20">
+    <section className="bg-qorvn-surface/30 py-20">
       <Container>
         <h2 className="mb-12 text-2xl font-medium text-white md:text-3xl">
           How it works
@@ -312,17 +312,17 @@ export function ProductSteps({ steps }: { steps: ProductStep[] }) {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {steps.map((step, index) => (
             <div key={index} className="relative">
-              <div className="rounded-2xl border border-mthd-border bg-mthd-black p-6 md:p-8">
-                <span className="text-xs font-semibold uppercase tracking-widest text-mthd-accent">
+              <div className="rounded-2xl border border-qorvn-border bg-qorvn-black p-6 md:p-8">
+                <span className="text-xs font-semibold uppercase tracking-widest text-qorvn-accent">
                   {step.step}
                 </span>
                 <h3 className="mt-4 text-xl font-medium text-white">
                   {step.title}
                 </h3>
-                <p className="mt-2 text-mthd-muted">{step.description}</p>
+                <p className="mt-2 text-qorvn-muted">{step.description}</p>
               </div>
               {index < steps.length - 1 && (
-                <div className="absolute -bottom-4 left-1/2 z-10 hidden -translate-x-1/2 text-mthd-accent md:block">
+                <div className="absolute -bottom-4 left-1/2 z-10 hidden -translate-x-1/2 text-qorvn-accent md:block">
                   ↓
                 </div>
               )}
@@ -347,8 +347,8 @@ export function ProductBeforeAfter({
     <section className="py-20">
       <Container>
         <div className="grid gap-8 md:grid-cols-2">
-          <div className="rounded-3xl border border-mthd-border bg-mthd-surface/20 p-8">
-            <h3 className="mb-6 text-sm font-semibold uppercase tracking-widest text-mthd-muted">
+          <div className="rounded-3xl border border-qorvn-border bg-qorvn-surface/20 p-8">
+            <h3 className="mb-6 text-sm font-semibold uppercase tracking-widest text-qorvn-muted">
               Before
             </h3>
             <ul className="space-y-4">
@@ -361,14 +361,14 @@ export function ProductBeforeAfter({
             </ul>
           </div>
 
-          <div className="rounded-3xl border border-mthd-accent/40 bg-mthd-surface/40 p-8">
-            <h3 className="mb-6 text-sm font-semibold uppercase tracking-widest text-mthd-accent">
+          <div className="rounded-3xl border border-qorvn-accent/40 bg-qorvn-surface/40 p-8">
+            <h3 className="mb-6 text-sm font-semibold uppercase tracking-widest text-qorvn-accent">
               With {productName}
             </h3>
             <ul className="space-y-4">
               {after.map((item) => (
                 <li key={item} className="flex items-center gap-3 text-white">
-                  <Check className="h-5 w-5 text-mthd-accent" />
+                  <Check className="h-5 w-5 text-qorvn-accent" />
                   {item}
                 </li>
               ))}
@@ -388,7 +388,7 @@ export function ProductFeatures({
   title?: string;
 }) {
   return (
-    <section className="border-t border-mthd-border py-20">
+    <section className="border-t border-qorvn-border py-20">
       <Container>
         <h2 className="mb-12 text-2xl font-medium text-white md:text-3xl">
           {title}
@@ -397,9 +397,9 @@ export function ProductFeatures({
           {features.map((feature) => (
             <div
               key={feature}
-              className="flex items-start gap-4 rounded-2xl border border-mthd-border bg-mthd-surface/20 p-5"
+              className="flex items-start gap-4 rounded-2xl border border-qorvn-border bg-qorvn-surface/20 p-5"
             >
-              <Check className="mt-0.5 h-5 w-5 shrink-0 text-mthd-accent" />
+              <Check className="mt-0.5 h-5 w-5 shrink-0 text-qorvn-accent" />
               <span className="text-white">{feature}</span>
             </div>
           ))}
@@ -411,7 +411,7 @@ export function ProductFeatures({
 
 export function ProductFAQ({ faq }: { faq: ProductFAQ[] }) {
   return (
-    <section className="border-t border-mthd-border py-20">
+    <section className="border-t border-qorvn-border py-20">
       <Container>
         <h2 className="mb-12 text-2xl font-medium text-white md:text-3xl">
           FAQ
@@ -420,15 +420,15 @@ export function ProductFAQ({ faq }: { faq: ProductFAQ[] }) {
           {faq.map((item, index) => (
             <details
               key={index}
-              className="group rounded-2xl border border-mthd-border bg-mthd-surface/20 p-6"
+              className="group rounded-2xl border border-qorvn-border bg-qorvn-surface/20 p-6"
             >
               <summary className="flex cursor-pointer list-none items-center justify-between text-white focus:outline-none">
                 <span className="font-medium">{item.q}</span>
-                <span className="text-mthd-accent group-open:rotate-45 transition-transform duration-200">
+                <span className="text-qorvn-accent group-open:rotate-45 transition-transform duration-200">
                   +
                 </span>
               </summary>
-              <p className="mt-4 text-mthd-muted">{item.a}</p>
+              <p className="mt-4 text-qorvn-muted">{item.a}</p>
             </details>
           ))}
         </div>
@@ -442,9 +442,9 @@ function WorkflowDiagram({ product }: { product: Product }) {
   if (!visual) return null;
 
   return (
-    <div className="rounded-3xl border border-mthd-border bg-mthd-black p-8 md:p-10">
+    <div className="rounded-3xl border border-qorvn-border bg-qorvn-black p-8 md:p-10">
       {visual.note && (
-        <span className="mb-8 inline-flex items-center rounded-full border border-mthd-accent/40 bg-mthd-accent/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-mthd-accent">
+        <span className="mb-8 inline-flex items-center rounded-full border border-qorvn-accent/40 bg-qorvn-accent/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-qorvn-accent">
           {visual.note}
         </span>
       )}
@@ -453,15 +453,15 @@ function WorkflowDiagram({ product }: { product: Product }) {
           <div key={step} className="flex w-full max-w-md flex-col items-center">
             {i > 0 && (
               <ChevronDown
-                className="my-2 h-5 w-5 text-mthd-accent/60"
+                className="my-2 h-5 w-5 text-qorvn-accent/60"
                 aria-hidden
               />
             )}
             <div
               className={`w-full rounded-2xl border px-6 py-4 text-center text-sm font-medium tracking-wide ${
                 i === 0 || i === visual.steps.length - 1
-                  ? "border-mthd-accent/50 bg-mthd-accent/10 text-white"
-                  : "border-mthd-border bg-mthd-surface/60 text-mthd-muted"
+                  ? "border-qorvn-accent/50 bg-qorvn-accent/10 text-white"
+                  : "border-qorvn-border bg-qorvn-surface/60 text-qorvn-muted"
               }`}
             >
               {step}
@@ -481,7 +481,7 @@ export function ProductVisual({ product }: { product: Product }) {
   if (!hasVideo && !shots.length && !hasWorkflow) return null;
 
   return (
-    <section className="bg-mthd-surface/30 py-20">
+    <section className="bg-qorvn-surface/30 py-20">
       <Container>
         <h2 className="mb-8 text-2xl font-medium text-white md:text-3xl">
           {hasWorkflow && !hasVideo && !shots.length
@@ -489,7 +489,7 @@ export function ProductVisual({ product }: { product: Product }) {
             : `See ${product.name} in action`}
         </h2>
         {hasVideo ? (
-          <div className="relative aspect-video w-full overflow-hidden rounded-3xl border border-mthd-border bg-mthd-black">
+          <div className="relative aspect-video w-full overflow-hidden rounded-3xl border border-qorvn-border bg-qorvn-black">
             <video
               src={product.demoVideo}
               controls
@@ -504,7 +504,7 @@ export function ProductVisual({ product }: { product: Product }) {
               rel="noopener noreferrer"
               className="block"
             >
-              <div className="relative aspect-video w-full overflow-hidden rounded-3xl border border-mthd-border bg-mthd-black">
+              <div className="relative aspect-video w-full overflow-hidden rounded-3xl border border-qorvn-border bg-qorvn-black">
                 <Image
                   src={shots[0].src}
                   alt={shots[0].alt}
@@ -525,7 +525,7 @@ export function ProductVisual({ product }: { product: Product }) {
                     rel="noopener noreferrer"
                     className="block"
                   >
-                    <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-mthd-border bg-mthd-black transition-colors hover:border-mthd-accent/50">
+                    <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-qorvn-border bg-qorvn-black transition-colors hover:border-qorvn-accent/50">
                       <Image
                         src={shot.src}
                         alt={shot.alt}
@@ -551,17 +551,17 @@ export function ProductCTA({ product }: { product: Product }) {
   const isLab = product.category === "lab";
 
   return (
-    <section className="border-t border-mthd-border py-20">
+    <section className="border-t border-qorvn-border py-20">
       <Container>
-        <div className="rounded-3xl border border-mthd-border bg-mthd-surface/30 p-8 text-center md:p-16">
+        <div className="rounded-3xl border border-qorvn-border bg-qorvn-surface/30 p-8 text-center md:p-16">
           <h2 className="text-2xl font-medium text-white md:text-4xl">
             {isLab
               ? `Try ${product.name}`
               : `Interested in ${product.name}?`}
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-mthd-muted">
+          <p className="mx-auto mt-4 max-w-xl text-qorvn-muted">
             {isLab
-              ? "Launch it straight from the MTHD Lab — no signup, no pitch."
+              ? "Launch it straight from the QORVN Lab — no signup, no pitch."
               : "Request access and we'll reach out to talk through fit, or book a demo to see it in action."}
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
@@ -572,7 +572,7 @@ export function ProductCTA({ product }: { product: Product }) {
                   <ExternalLink className="h-4 w-4" />
                 </Button>
               ) : (
-                <span className="inline-flex items-center rounded-full border border-dashed border-mthd-border px-6 py-3 text-sm font-medium text-mthd-muted">
+                <span className="inline-flex items-center rounded-full border border-dashed border-qorvn-border px-6 py-3 text-sm font-medium text-qorvn-muted">
                   Coming Soon — link pending
                 </span>
               )

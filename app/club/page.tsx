@@ -3,9 +3,9 @@ import { Container } from "../../components/ui";
 import { ClubForm } from "../../components/forms";
 
 export const metadata: Metadata = {
-  title: "MTHD Club | MTHD",
+  title: "QORVN Club | QORVN",
   description:
-    "Join the MTHD Club — early access to new apps, games, experiments, and products coming out of MTHD.",
+    "Join the QORVN Club — early access to new apps, games, experiments, and products coming out of QORVN.",
 };
 
 const perks = [
@@ -21,28 +21,28 @@ export default function ClubPage() {
         <div className="grid gap-16 lg:grid-cols-2">
           <div>
             <h1 className="text-4xl font-semibold tracking-tight text-white md:text-5xl">
-              MTHD CLUB.
+              QORVN CLUB.
             </h1>
-            <p className="mt-4 text-xl text-mthd-accent">
+            <p className="mt-4 text-xl text-qorvn-accent">
               Want to test what we&apos;re building next?
             </p>
-            <p className="mt-4 max-w-md text-lg leading-relaxed text-mthd-muted">
-              The MTHD Club is an early-access list for people who enjoy trying
-              what MTHD builds — apps, games, prototypes, and experiments —
+            <p className="mt-4 max-w-md text-lg leading-relaxed text-qorvn-muted">
+              The QORVN Club is an early-access list for people who enjoy trying
+              what QORVN builds — apps, games, prototypes, and experiments —
               before everyone else.
             </p>
             <ul className="mt-8 space-y-3">
               {perks.map((perk) => (
                 <li
                   key={perk}
-                  className="flex items-center gap-3 text-mthd-muted"
+                  className="flex items-center gap-3 text-qorvn-muted"
                 >
-                  <span className="h-1.5 w-1.5 rounded-full bg-mthd-accent" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-qorvn-accent" />
                   {perk}
                 </li>
               ))}
             </ul>
-            <p className="mt-8 text-sm text-mthd-muted">
+            <p className="mt-8 text-sm text-qorvn-muted">
               Free to join. No spam — just new things to try.
             </p>
           </div>

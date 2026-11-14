@@ -3,9 +3,9 @@ import { Container } from "../../components/ui";
 import { BookDemoForm } from "../../components/forms";
 
 export const metadata: Metadata = {
-  title: "Book a Demo | MTHD",
+  title: "Book a Demo | QORVN",
   description:
-    "Book a demo with MTHD and show us how your business is working today.",
+    "Book a demo with QORVN and show us how your business is working today.",
 };
 
 export default function BookPage() {
@@ -17,7 +17,7 @@ export default function BookPage() {
             <h1 className="text-4xl font-semibold tracking-tight text-white md:text-5xl">
               LET&apos;S SEE HOW YOU&apos;RE DOING IT NOW.
             </h1>
-            <p className="mt-4 text-lg text-mthd-muted">
+            <p className="mt-4 text-lg text-qorvn-muted">
               Tell us what&apos;s slowing you down and what you&apos;re interested
               in. We&apos;ll be in touch to schedule a time.
             </p>
@@ -31,11 +31,11 @@ export default function BookPage() {
               Replace the div below with a Calendly, Cal.com, or custom
               scheduling embed once the account is set up.
             */}
-            <div className="mt-10 rounded-2xl border border-dashed border-mthd-border p-8 text-center">
-              <p className="text-sm font-medium text-mthd-muted">
+            <div className="mt-10 rounded-2xl border border-dashed border-qorvn-border p-8 text-center">
+              <p className="text-sm font-medium text-qorvn-muted">
                 Booking calendar integration goes here
               </p>
-              <p className="mt-2 text-xs text-mthd-muted">
+              <p className="mt-2 text-xs text-qorvn-muted">
                 Calendly / Cal.com embed placeholder
               </p>
             </div>

@@ -44,7 +44,7 @@ export default function HeroVisual() {
         xmlns="http://www.w3.org/2000/svg"
         className="w-full"
         role="img"
-        aria-label="Scattered work flowing through MTHD into an organized system"
+        aria-label="Scattered work flowing through QORVN into an organized system"
       >
         <style>{`
           .hv-label { font-family: var(--font-inter), Inter, system-ui, sans-serif; }
@@ -169,7 +169,7 @@ export default function HeroVisual() {
           fontWeight="600"
           fill="#ffffff"
         >
-          MTHD<tspan fill="#2dd4bf">.</tspan>
+          QORVN<tspan fill="#2dd4bf">.</tspan>
         </text>
 
         {ORGANIZED.map((chip, i) => (
@@ -203,7 +203,7 @@ export default function HeroVisual() {
           </g>
         ))}
       </svg>
-      <p className="mt-4 text-center text-sm text-mthd-muted">
+      <p className="mt-4 text-center text-sm text-qorvn-muted">
         Scattered work, organized into one system.
       </p>
     </div>

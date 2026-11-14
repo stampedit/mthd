@@ -10,7 +10,7 @@ const navLinks = [
   { label: "Products", href: "/products" },
   { label: "Lab", href: "/lab" },
   { label: "Solutions", href: "/solutions" },
-  { label: "The MTHD", href: "/the-mthd" },
+  { label: "Process", href: "/process" },
   { label: "About", href: "/about" },
 ];
 
@@ -20,7 +20,7 @@ export default function Header() {
   const businessProducts = getBusinessProducts();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-mthd-border bg-mthd-black/90 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-qorvn-border bg-qorvn-black/90 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-10">
         <Logo />
 
@@ -31,7 +31,7 @@ export default function Header() {
             onMouseLeave={() => setProductOpen(false)}
           >
             <button
-              className="flex items-center gap-1 text-sm text-mthd-muted transition-colors hover:text-white"
+              className="flex items-center gap-1 text-sm text-qorvn-muted transition-colors hover:text-white"
               onClick={() => setProductOpen((v) => !v)}
               aria-expanded={productOpen}
             >
@@ -39,12 +39,12 @@ export default function Header() {
               <ChevronDown className="h-4 w-4" />
             </button>
             {productOpen && (
-              <div className="absolute left-0 top-full min-w-[240px] rounded-xl border border-mthd-border bg-mthd-surface p-2 shadow-xl">
+              <div className="absolute left-0 top-full min-w-[240px] rounded-xl border border-qorvn-border bg-qorvn-surface p-2 shadow-xl">
                 {businessProducts.map((product) => (
                   <Link
                     key={product.slug}
                     href={`/products/${product.slug}`}
-                    className="block rounded-lg px-4 py-3 text-sm text-mthd-muted transition-colors hover:bg-mthd-border hover:text-white"
+                    className="block rounded-lg px-4 py-3 text-sm text-qorvn-muted transition-colors hover:bg-qorvn-border hover:text-white"
                     onClick={() => setProductOpen(false)}
                   >
                     <span className="block text-white">{product.name}</span>
@@ -53,15 +53,15 @@ export default function Header() {
                 ))}
                 <Link
                   href="/lab"
-                  className="block rounded-lg px-4 py-3 text-sm text-mthd-muted transition-colors hover:bg-mthd-border hover:text-white"
+                  className="block rounded-lg px-4 py-3 text-sm text-qorvn-muted transition-colors hover:bg-qorvn-border hover:text-white"
                   onClick={() => setProductOpen(false)}
                 >
-                  <span className="block text-white">MTHD Lab</span>
+                  <span className="block text-white">QORVN Lab</span>
                   <span className="text-xs">Experiments you can launch now</span>
                 </Link>
                 <Link
                   href="/products"
-                  className="block rounded-lg px-4 py-3 text-sm font-medium text-mthd-accent transition-colors hover:bg-mthd-border"
+                  className="block rounded-lg px-4 py-3 text-sm font-medium text-qorvn-accent transition-colors hover:bg-qorvn-border"
                 >
                   View All Products
                 </Link>
@@ -73,7 +73,7 @@ export default function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm text-mthd-muted transition-colors hover:text-white"
+              className="text-sm text-qorvn-muted transition-colors hover:text-white"
             >
               {link.label}
             </Link>
@@ -87,7 +87,7 @@ export default function Header() {
         </div>
 
         <button
-          className="flex h-10 w-10 items-center justify-center rounded-lg border border-mthd-border text-white md:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-lg border border-qorvn-border text-white md:hidden"
           onClick={() => setMobileOpen((v) => !v)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
         >
@@ -96,8 +96,8 @@ export default function Header() {
       </div>
 
       {mobileOpen && (
-        <div className="border-t border-mthd-border bg-mthd-black px-6 pb-8 pt-6 md:hidden">
-          <div className="mb-6 text-sm font-medium text-mthd-muted">Products</div>
+        <div className="border-t border-qorvn-border bg-qorvn-black px-6 pb-8 pt-6 md:hidden">
+          <div className="mb-6 text-sm font-medium text-qorvn-muted">Products</div>
           <div className="mb-6 flex flex-col gap-3">
             {businessProducts.map((product) => (
               <Link
@@ -114,11 +114,11 @@ export default function Header() {
               className="text-white"
               onClick={() => setMobileOpen(false)}
             >
-              MTHD Lab
+              QORVN Lab
             </Link>
             <Link
               href="/products"
-              className="text-mthd-accent"
+              className="text-qorvn-accent"
               onClick={() => setMobileOpen(false)}
             >
               View All Products
